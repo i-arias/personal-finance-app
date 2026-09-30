@@ -1,0 +1,40 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "personal-finance",
+	"main": "./src/worker/index.ts",
+	"compatibility_date": "2026-09-26",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"observability": {
+		"enabled": true
+	},
+	"upload_source_maps": true,
+	// Solo la URL principal de workers.dev; sin URLs de versiones de prueba.
+	"workers_dev": true,
+	"preview_urls": false,
+	"assets": {
+		"directory": "./dist/client",
+		"not_found_handling": "single-page-application",
+		// La API siempre pasa por el Worker (y por su verificación de Access).
+		"run_worker_first": [
+			"/api/*"
+		]
+	},
+	"vars": {
+		// Datos de tu aplicación de Access (ver docs/cloudflare-setup.md). No son secretos.
+		"ACCESS_TEAM_DOMAIN": "https://<your-team>.cloudflareaccess.com",
+		"ACCESS_AUD": "<your-access-aud-tag>",
+		"ALLOWED_EMAILS": "you@example.com",
+		// Client IDs de los Service Tokens de Access (Atajos del iPhone), separados por comas.
+		"ACCESS_SERVICE_TOKENS": ""
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "personal-finance-db",
+			// Reemplázalo por el id que muestra `npx wrangler d1 create personal-finance-db`.
+			"database_id": "00000000-0000-0000-0000-000000000000"
+		}
+	]
+}

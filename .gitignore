@@ -1,0 +1,21 @@
+# Secretos locales (solo se versionan los .example)
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
+
+# Wrangler
+.wrangler/
+
+# Copias de la base de datos y SQL con datos reales
+backups/
+*.local.sql
+
+# Dependencias y build
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Logs y sistema
+*.log
+.DS_Store

@@ -1,0 +1,5 @@
+# Copia este archivo como .dev.vars (no se sube a git).
+# Permite usar la API en localhost sin pasar por Cloudflare Access.
+DEV_BYPASS_AUTH=true
+# Clave de /api/ingest/* solo para pruebas locales. La real se guarda con: npx wrangler secret put INGEST_KEY
+INGEST_KEY=clave-local-de-prueba
